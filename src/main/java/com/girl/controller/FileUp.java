@@ -15,6 +15,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import com.girl.utils.ResultUtil;
+import com.girl.utils.UUIDGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,13 +41,27 @@ public class FileUp {
 
     @RequestMapping("/upload")
     @ResponseBody
-    public String handleFileUpload(@RequestParam(value="name") String name,@RequestParam("file") MultipartFile file) {
+    public String handleFileUpload(@RequestParam(value = "name") String name, @RequestParam("file") MultipartFile file) {
+        String imageName;
         if (!file.isEmpty()) {
             try {
-                System.out.println("============================"+name);
+                System.out.println("============================" + name);
                 System.out.println(System.getProperty("user.dir")); // 项目路径
-                System.out.println(file.getOriginalFilename()); // 项目路径
-                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File("f:\\"+name+".jpg")));
+                String fileName = file.getOriginalFilename();
+                String suffix = fileName.substring(fileName.indexOf("."));
+                System.out.println(fileName + "=================" + suffix); // 项目名称
+                if (suffix.equals(".jpg")) {
+                    imageName = "f:\\" + UUIDGenerator.getUUID() + ".jpg";
+                    File fileImage = new File(imageName);
+                } else if (suffix.equals(".png")) {
+                    imageName = "f:\\" + UUIDGenerator.getUUID() + ".png";
+                    File fileImage = new File(imageName);
+                } else {
+                    return "上传的图片格式不正确！";
+                }
+                File fileImage = new File(imageName);
+                System.out.println("图片大小==========" + fileImage.length());
+                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(fileImage));
 //                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(file.getOriginalFilename())));
                 out.write(file.getBytes());
                 out.flush();
@@ -58,9 +74,9 @@ public class FileUp {
                 return "上传失败," + e.getMessage();
             }
             System.out.println("文件上传=============================>>成功");
-            return "上传成功";
+            return imageName;
         } else {
-            System.out.println("文件上传==============================>>为空");
+            System.out.println("文件上传=============================>>为空");
             return "上传失败，因为文件是空的.";
         }
     }

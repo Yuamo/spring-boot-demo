@@ -6,13 +6,16 @@ import com.girl.exception.GirlException;
 import com.girl.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by Administrator on 2017/8/18.
  */
+@Controller
 @ControllerAdvice
 public class ExceptionHandle {
 
@@ -29,4 +32,23 @@ public class ExceptionHandle {
             return ResultUtil.error("-1", "未知错误！");
         }
     }
+
+
+//    @RequestMapping("*")
+//    public ModelAndView fallbackHandler(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//        return buildModelAndViewErrorPage(request, response, null, HttpStatus.NOT_FOUND);
+//    }
+//
+//    private ModelAndView buildModelAndViewErrorPage(HttpServletRequest request, HttpServletResponse response, Exception ex, HttpStatus httpStatus) {
+//        response.setStatus(httpStatus.value());
+//
+//        ModelAndView mav = new ModelAndView("error.html");
+//        if (ex != null) {
+//            mav.addObject("title", ex);
+//        }
+//        mav.addObject("content", request.getRequestURL());
+//        return mav;
+//    }
+
+
 }

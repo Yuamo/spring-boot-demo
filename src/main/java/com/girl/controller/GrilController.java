@@ -104,7 +104,7 @@ public class GrilController {
         girlService.insertTwo();
     }
 
-    @GetMapping(value = "girls/getAge/{id}")
+    @GetMapping(value = "girls/getId/{id}")
     public Result<Girl> getAge(@PathVariable("id") Integer id) throws Exception {
         return ResultUtil.success(girlService.getAge(id));
     }
