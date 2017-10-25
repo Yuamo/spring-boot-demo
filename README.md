@@ -14,7 +14,15 @@
 
 #################################################
 2017.10.24 1024程序员节加入上传图片类型判定！
-2017.10.25 加入ueditor后端代码
-
+2017.10.25 加入ueditor后端代码，前端使用[vue-ueditor](https://github.com/SilentTiger/vue-ueditor)
+```js
+     window.UEDITOR_CONFIG = {
+    
+            // 为编辑器实例添加一个路径，这个不能被注释
+        UEDITOR_HOME_URL: URL,
+    
+            // 服务器统一请求接口路径
+        serverUrl: 'http://localhost:8081/server/ueditor/exec',
+```
 ## 热更新 IDEA 配置
 [热更新配置链接](http://blog.csdn.net/wjc475869/article/details/52442484)
