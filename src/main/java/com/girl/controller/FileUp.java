@@ -28,7 +28,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Controller
 public class FileUp {
-    //访问路径为：http://127.0.0.1:8080/file
+    //访问路径为：http://127.0.0.1:8080/server/file
     @RequestMapping("/file")
     public String file() {
         return "/file";
@@ -39,7 +39,7 @@ public class FileUp {
         return "/mutifile";
     }
 
-    @RequestMapping("/upload")
+    @RequestMapping("/upLoadFile")
     @ResponseBody
     public String handleFileUpload(@RequestParam(value = "name") String name, @RequestParam("file") MultipartFile file) {
         String imageName;
