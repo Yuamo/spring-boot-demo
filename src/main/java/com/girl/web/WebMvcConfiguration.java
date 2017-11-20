@@ -62,7 +62,9 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
+        
         return characterEncodingFilter;
+
     }
 
 }
