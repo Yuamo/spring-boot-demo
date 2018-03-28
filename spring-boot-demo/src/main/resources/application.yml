@@ -1,0 +1,21 @@
+# 应用的yml文件的类型
+spring:
+  profiles:
+    active: prod
+  # 数据库连接
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springbootdb
+    username: root
+    password: mysql
+  #jpa配置
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  #ueditor 配置无法覆盖 application.properties中的配置文件
+  #ueditor:
+   # config: config.json
+   # unified: true
+   # upload-path: F:/upload/
+   # url-prefix: http://localhost:8080/server/upload/

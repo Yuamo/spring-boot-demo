@@ -1,6 +1,0 @@
-server:
-  port: 8082
-  context-path: /server
-girl:
-  cupSize: B
-  age: 12

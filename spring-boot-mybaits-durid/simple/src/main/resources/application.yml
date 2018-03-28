@@ -1,0 +1,35 @@
+server:
+  port: 8001
+
+mybatis:
+  config-location: classpath:mybatis-config.xml    # mybatis配置文件所在路径
+  type-aliases-package: com.g_apple.helloworld.vo              # 定义所有操作类的别名所在包
+  mapper-locations: classpath:mapper/*.xml        # 所有的mapper映射文件
+
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource    # 配置当前要使用的数据源的操作类型
+    driver-class-name: com.mysql.jdbc.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC   # 数据库连接地址
+    username: root                                  # 数据库用户名
+    password: mysql                            # 数据库连接密码
+    dbcp2:                                          # 进行数据库连接池的配置
+      min-idle: 5                                   # 数据库连接池的最小维持连接数
+      initial-size: 5                               # 初始化提供的连接数
+      max-total: 5                                  # 最大的连接数
+      max-wait-millis: 200                          # 等待连接获取的最大超时时间
+  application:
+    name: microcloud-provider-dept
+
+#security:
+#  user:
+#    name: gwolf       #用户名
+#    password: gwolf   #密码
+#    role:             #授权角色
+
+druidMonitor:
+  allow:
+  deny:
+  loginUsername: boot
+  loginPassword: 123456
